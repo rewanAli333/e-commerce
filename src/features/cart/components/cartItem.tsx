@@ -20,7 +20,7 @@ type Props = {
 
 export default function CartItem({ info }: Props) {
   const { _id, count, price, product } = info;
-  const { category, imageCover, quantity, title, id } = product;
+  const { category, imageCover, quantity, title, _id: productId } = product;
 
   const disPatch = useAppDispatch();
 
@@ -73,8 +73,8 @@ export default function CartItem({ info }: Props) {
     });
 
     if (result.isConfirmed) {
-      disPatch(removeProduct({ id }));
-      await removeProductFromCart(id);
+      disPatch(removeProduct({_id} ));
+      await removeProductFromCart(productId);
       toast.success("Item removed");
     }
   };
@@ -82,7 +82,7 @@ export default function CartItem({ info }: Props) {
   const handleUpdate = async (newCount: number) => {
     if (newCount < 1) return; 
     try {
-      const response = await updateProduct(id, newCount);
+      const response = await updateProduct(productId, newCount);
       disPatch(setCartInfo(response));
     } catch (error) {
       throw error;
@@ -95,7 +95,7 @@ export default function CartItem({ info }: Props) {
       <div className="container">
       <div className="p-4 sm-5">
         <div className="flex gap-4 sm:gap-6">
-          <Link href={`/products/productDetails/${id}`} className="relative shrink-0 group">
+          <Link href={`/products/productDetails/${productId}`} className="relative shrink-0 group">
             <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl bg-linear-to-br from-gray-50 via-white to-gray-100 p-3 border border-gray-500">
               <Image
                 src={imageCover}
@@ -113,7 +113,7 @@ export default function CartItem({ info }: Props) {
 
           <div className="flex-1 min-w-0 flex flex-col">
             <div className="mb-3">
-              <Link href={`/products/${id}`} className="group/title">
+              <Link href={`/products/productDetails/${productId}`} className="group/title">
                 <h3 className="font-semibold text-gray-900 group-hover/title:text-green-600 transition-colors leading-relaxed">
                   {title}
                 </h3>

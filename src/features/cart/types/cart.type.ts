@@ -41,8 +41,25 @@ export interface CartResponse {
     data: CartData;
 }
 
+// export interface CartProductDetails {
+//   _id: string;
+//   title: string;
+//   quantity: number;
+//     imageCover: string;
+//   category: {
+//     _id: string;
+//     name: string;
+//     slug: string;
+//   };
+//   subcategory: CartSubcategory[];
+// }
+
+
+
+
 export interface CartProductDetails {
   _id: string;
+  id?: string; // لو محتاجة legacy id
   title: string;
   quantity: number;
   imageCover: string;
@@ -51,5 +68,6 @@ export interface CartProductDetails {
     name: string;
     slug: string;
   };
+  ratingsAverage?: number;
   subcategory: CartSubcategory[];
 }
