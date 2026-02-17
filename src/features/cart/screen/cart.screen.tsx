@@ -62,7 +62,7 @@ export default function CartScreen() {
                         </div>
                     </div>
                     <div className="lg:col-span-1">
-                    <CartSummary totalCartPrice={totalCartPrice}  numberOfCartItems={numOfCartItems}/>
+                    <CartSummary totalCartPrice={totalCartPrice}  numOfCartItems={numOfCartItems}/>
                 </div>
                 </div>
                 
