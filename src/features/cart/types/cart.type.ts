@@ -1,15 +1,3 @@
-// export interface CartProductDetails {
-// subcategory: CartSubcategory[];
-// _id: string;
-// title: string;
-// quantity: number;
-// imageCover: string;
-// category: CartCategory;
-// brand: CartBrand;
-// ratingsAverage: number;
-// id: string;
-// }
-
 export interface CartSubcategory {
   _id: string;
   name: string;
@@ -40,21 +28,6 @@ export interface CartResponse {
     cartId: string;
     data: CartData;
 }
-
-// export interface CartProductDetails {
-//   _id: string;
-//   title: string;
-//   quantity: number;
-//     imageCover: string;
-//   category: {
-//     _id: string;
-//     name: string;
-//     slug: string;
-//   };
-//   subcategory: CartSubcategory[];
-// }
-
-
 
 
 export interface CartProductDetails {

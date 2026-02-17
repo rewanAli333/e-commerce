@@ -16,7 +16,6 @@ import { useRouter } from 'next/navigation';
 import { setToken } from '../server/server.actions';
 import { setAuthInfo } from '../store/auth.slice';
 import { useDispatch } from 'react-redux';
-// import { userInfo } from 'node:os';
 
 
 export default function Login() {
@@ -64,7 +63,9 @@ export default function Login() {
                 }
             }
             
-        } catch (error) {}
+        } catch (error) {
+            throw error;
+        }
     }
     
     return <>
