@@ -22,6 +22,8 @@ export default function PaymentScreen() {
     const { cartId } = useAppSelector((state) => state.cart);
     const router = useRouter();
     const totalPrice = useAppSelector((state) => state.cart.totalCartPrice);
+    const shipping = totalPrice > 500 ? 0 : 50;
+    const subtotal = totalPrice - shipping;
     const dispatch = useAppDispatch()
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
@@ -112,51 +114,34 @@ export default function PaymentScreen() {
                                         <FontAwesomeIcon icon={faShoppingBag} />
                                         Order Summary
                                     </h2>
-                                    <p className="text-gray-100 text-sm mt-1">
-
-                                    </p>
+                                    
                                 </div>
 
                                 <div className="p-1">
-                                    <div className="space-y-3 max-h-56 overflow-y-auto mb-1 pr-1">
-                                        <div className="flex flex-col items-center gap-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-
-                                            {/* <div className="flex-1 min-w-0">
-                                                <p className="text-sm font-medium text-gray-900 truncate">
-
-                                                </p>
-                                            </div> */}
                                             <hr className="border-gray-100 my-4" />
-                                            <div className="space-y-2 flex items-center flex-col">
-                                                <div className="flex justify-between text-gray-600">
-                                                    <span>Subtotal</span>
-                                                    <span className="font-medium">EGP</span>
+                                            <div className="p-4 bg-white rounded-xl shadow-md space-y-4 max-w-md mx-auto">
+                                                <div className="flex w-full justify-between items-center">
+                                                    <span className="text-gray-600">Subtotal</span>
+                                                    <span className="font-medium">{subtotal.toLocaleString()} EGP</span>
                                                 </div>
-                                                <div className="flex justify-between text-gray-600">
-                                                    <span className="flex items-center gap-2">
-                                                        <FontAwesomeIcon icon={faTruck} className="text-gray-400" />
-                                                        Shipping
+                                                <div className="flex w-full justify-between items-center">
+                                                    <span className="text-gray-600 flex items-center gap-2">
+                                                    <FontAwesomeIcon icon={faTruck} className="text-gray-400" />
+                                                    Shipping
                                                     </span>
-                                                    {true?(
                                                     <span className="text-green-600 font-semibold">
-                                                        Free
-                                                    </span>):(
-                                                        <span className="font-medium">EGP</span>
-                                                    )}
+                                                    {shipping === 0 ? "Free" : `${shipping.toLocaleString()} EGP`}
+                                                    </span>
                                                 </div>
 
                                                 <hr className="border-gray-100" />
-                                                <div className="flex justify-between items-center">
+                                                <div className="flex w-full justify-between items-center px-4 py-2 bg-gray-50 rounded-lg">
                                                     <span className="text-lg font-bold text-gray-900">
                                                         Total
                                                     </span>
-                                                    
-                                                    <div className="text-right">
-                                                        <span className="text-2xl font-bold text-green-600">
-                                                            {totalPrice.toLocaleString()}
-                                                        </span>
-                                                        <span className="text-sm text-gray-500 ml-1">EGP</span>
-                                                    </div>
+                                                    <span className="text-2xl font-bold text-green-600">
+                                                        {totalPrice.toLocaleString()} EGP
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -183,8 +168,6 @@ export default function PaymentScreen() {
                                                     <span>Easy Returns</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faCartShopping, faMinus, faShareNodes, faTruckFast, faBolt, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {  faCartShopping, faMinus, faShareNodes, faBolt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Product } from "../types/products.type"
 import Rating from "./ui/rating";
@@ -102,7 +102,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                                 </label>
                                 <div className="flex items-center gap-4">
                                     <div className="flex items-center  border-2 border-gray-200 rounded-lg overflow-hidden">
-                                        <button id="increase-qty" onClick={()=>{setCount(count-1)}}
+                                        <button id="increase-qty" onClick={()=>{setCount(count-1)}}  disabled={count<= 1}
                                             className="px-4 py-3 text-gray-600 hover:bg-gray-100 transition disabled:opacity-5">
                                             <FontAwesomeIcon icon={faMinus} />
                                         </button>
@@ -149,17 +149,6 @@ export default function ProductDetails({ product }: { product: Product }) {
                                 <button className="border-2 border-gray-200 text-gray-700 py-3 px-4 rounded-xl hover:border-green-300 hover:text-green-600">
                                     <FontAwesomeIcon icon={faShareNodes}/>
                                 </button>
-                            </div>
-                            <div className="border-t border-gray-100 pt-6">
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className=" flex h-10 w-10 bg-gray-100 text-green-600 rounded-full items-center justify-center">
-                                            <FontAwesomeIcon icon={faTruckFast} />
-                                        </div>
-                                    
-                            </div>
-                                </div>
-                                
                             </div>
                 </div>
                 </div>

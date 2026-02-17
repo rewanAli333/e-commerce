@@ -9,6 +9,7 @@ import { verifytoken } from "./(authentication)/server/server.actions";
 import { getLoggedUserCart } from "@/features/cart/server/cart.action";
 import { CartState } from "@/features/cart/store/cart.slice";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -8,7 +8,7 @@ import swal from "sweetalert2";
 
 
 import { CartItem as CartItemType } from "../types/cart.type";
-import { removeProductFromCart, updateProduct } from "../server/cart.action";
+import { getLoggedUserCart, removeProductFromCart, updateProduct } from "../server/cart.action";
 import { toast } from "react-toastify";
 import { removeProduct, setCartInfo } from "../store/cart.slice";
 import {useAppDispatch} from "@/store/store"
@@ -73,10 +73,21 @@ export default function CartItem({ info }: Props) {
     });
 
     if (result.isConfirmed) {
-      disPatch(removeProduct({ id: _id }));
-      await removeProductFromCart(productId);
-      toast.success("Item removed");
-    }
+  disPatch(removeProduct({ id: _id }));
+
+  try {
+    await removeProductFromCart(productId);
+
+    const updatedCart = await getLoggedUserCart();
+    disPatch(setCartInfo(updatedCart));
+
+    toast.success("Item removed");
+  } catch (error) {
+    toast.error("Failed to remove item");
+    disPatch(setCartInfo(await getLoggedUserCart()));
+  }
+}
+
   };
 
   const handleUpdate = async (newCount: number) => {
