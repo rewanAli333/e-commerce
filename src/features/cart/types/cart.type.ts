@@ -1,14 +1,22 @@
-export interface CartProductDetails {
+// export interface CartProductDetails {
 // subcategory: CartSubcategory[];
-_id: string;
-title: string;
-quantity: number;
-imageCover: string;
+// _id: string;
+// title: string;
+// quantity: number;
+// imageCover: string;
 // category: CartCategory;
 // brand: CartBrand;
-ratingsAverage: number;
-id: string;
+// ratingsAverage: number;
+// id: string;
+// }
+
+export interface CartSubcategory {
+  _id: string;
+  name: string;
+  slug: string;
+  category: string;
 }
+
 
 export interface CartItem { 
 count: number;
@@ -31,4 +39,17 @@ export interface CartResponse {
     numOfCartItems: number;
     cartId: string;
     data: CartData;
+}
+
+export interface CartProductDetails {
+  _id: string;
+  title: string;
+  quantity: number;
+  imageCover: string;
+  category: {
+    _id: string;
+    name: string;
+    slug: string;
+  };
+  subcategory: CartSubcategory[];
 }
