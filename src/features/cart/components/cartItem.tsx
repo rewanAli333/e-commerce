@@ -73,7 +73,7 @@ export default function CartItem({ info }: Props) {
     });
 
     if (result.isConfirmed) {
-      disPatch(removeProduct({_id} ));
+      disPatch(removeProduct({ id: _id }));
       await removeProductFromCart(productId);
       toast.success("Item removed");
     }

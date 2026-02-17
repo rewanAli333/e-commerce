@@ -59,7 +59,7 @@ export interface CartResponse {
 
 export interface CartProductDetails {
   _id: string;
-  id?: string; // لو محتاجة legacy id
+  id?: string; 
   title: string;
   quantity: number;
   imageCover: string;
