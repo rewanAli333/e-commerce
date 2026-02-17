@@ -1,11 +1,11 @@
 export interface CartProductDetails {
-subcategory: CartSubcategory[];
+// subcategory: CartSubcategory[];
 _id: string;
 title: string;
 quantity: number;
 imageCover: string;
-category: CartCategory;
-brand: CartBrand;
+// category: CartCategory;
+// brand: CartBrand;
 ratingsAverage: number;
 id: string;
 }
