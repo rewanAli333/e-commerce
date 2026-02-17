@@ -167,13 +167,6 @@ const onSubmit: SubmitHandler<signupFormValues> = async (values) => {
                                 {...register("password")} />
                             {errors.password ? (<p className='text-red-600 text-sm mt-1'>{errors.password.message}</p>) : (<p className='text-gray-600 text-sm mt-1'>Must be at least 8 characters long</p>)}
                         </div>
-                        <div className="password-strength flex items-center gap-1">
-                            <div className='bar rounded-xl overflow-hidden w-full h-1 bg-gray-200 '>
-                                <div className="progress w-1/4 bg-red-500 h-full"></div>
-                            </div>
-                            <span>Weak</span>
-                        </div>
-                        <p className='text-sm -mt-6'>Must be at least 8 characters long</p>
 
                         <div className="repassword flex flex-col gap-1">
                             <label htmlFor="password">Confirm Password*</label>
