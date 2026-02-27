@@ -1,5 +1,4 @@
 'use server';
-import { Product } from './../../products/types/products.type';
 import axios, { AxiosRequestConfig } from "axios";
 import { cookies } from "next/headers";
 import { CartResponse } from "../types/cart.type";
@@ -9,7 +8,7 @@ export async function addProductToCart({productId}:{productId:string}) {
     const token = cookieStore.get('token')?.value || null;
     
     if (!token) {
-      throw new Error("Authentication Requied")  
+        throw new Error("Authentication Requied")  
     }
     try {
         const options: AxiosRequestConfig = {
@@ -36,7 +35,7 @@ export async function getLoggedUserCart():Promise<CartResponse> {
     const token = cookieStore.get('token')?.value || null;
     
     if (!token) {
-      throw new Error("Authentication Requied")  
+        throw new Error("Authentication Requied")  
     }
     try {
         const options: AxiosRequestConfig = {

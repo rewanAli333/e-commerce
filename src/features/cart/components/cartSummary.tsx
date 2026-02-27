@@ -1,4 +1,4 @@
-import { faArrowLeftLong, faClock, faShieldAlt, faShoppingBag, faTag, faTruck } from "@fortawesome/free-solid-svg-icons";
+import {  faClock, faClockRotateLeft, faShieldAlt, faShoppingBag, faTag, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
@@ -91,20 +91,21 @@ export default function CartSummary({ totalCartPrice, numOfCartItems }: { totalC
             </Link>
         
             <div className="flex items-center justify-center gap-4 py-2">
-                <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                <div className="flex items-center gap-1 text-xs text-gray-500">
                     <FontAwesomeIcon icon={faShieldAlt} className="text-green-500" />
                     <span>Secure Payment</span>
                 </div>
                 <div className="w-px h-4 bg-gray-200"></div>
-                <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                <div className="flex items-center gap-1 text-xs text-gray-500">
+                    <FontAwesomeIcon icon={faClockRotateLeft} className="text-orange-500" />
+                    <span>Easy Return</span>
+                    </div>
+                    <div className="w-px h-4 bg-gray-200"></div>
+                <div className="flex items-center gap-1 text-xs text-gray-500">
                     <FontAwesomeIcon icon={faTruck} className="text-blue-500" />
                     <span>Fast Delivery</span>
-                </div>
+                    </div>
             </div>
-
-            <Link href={`/categories`} className="block text-center text-green-600 hover:text-green-700 text-sm font-medium py-2">
-                <FontAwesomeIcon icon={faArrowLeftLong} className="me-0.5" />
-                    Continue Shopping</Link>
             </div>
             </div>
 </>

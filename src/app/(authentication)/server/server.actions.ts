@@ -1,6 +1,5 @@
 'use server';
 
-// import { promises } from "dns";
 import { cookies } from "next/headers";
 import { AuthState } from "../store/auth.slice";
 import axios, { AxiosRequestConfig } from "axios";
